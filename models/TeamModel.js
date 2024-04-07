@@ -14,7 +14,7 @@ const teamSchema = new mongoose.Schema({
         required:true,
     },
     members:{
-        type:Int32Array,
+        type:Array,
         required:true,
     },
     picture:{
