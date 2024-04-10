@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const supplierSchema = new mongoose.Schema({
-    supplierId:{
+const restoSchema = new mongoose.Schema({
+    restoId:{
         type:Number,
         startsAt:1,
         autoIncrement:true,
@@ -22,6 +22,20 @@ const supplierSchema = new mongoose.Schema({
         type:String,
         required:false,
     },
+    suppliers:{
+        type:Array,
+        required:true,
+    },
+    isCentralKitchen:{
+        type:Boolean,
+        ref:"Role",
+        required:false,
+    },
+    ownerId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:false,
+    },
     picture:{
         type:String,
         required:false,
@@ -32,6 +46,6 @@ const supplierSchema = new mongoose.Schema({
     },
 });
 
-const Supplier = mongoose.model("Supplier",supplierSchema);
+const Resto = mongoose.model("Resto",restoSchema);
 
-module.exports = Supplier;
+module.exports = Resto;

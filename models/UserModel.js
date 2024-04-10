@@ -32,6 +32,11 @@ const userSchema = new mongoose.Schema({
         ref:"Team",
         required:false,
     },
+    restoId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Resto",
+        required:false,
+    },
     picture:{
         type:String,
         required:false,
