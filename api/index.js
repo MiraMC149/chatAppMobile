@@ -190,9 +190,16 @@ app.get("/team_members", (req, res) => {
 //endpoint to add supplier
 app.post("/add_supplier", async (req,res) => {
   const {name,email,phoneNo,location,picture} = req.body;
-  const status = 1;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
   //Create a new Supplier obj
-  const newSupp = new Supplier({name,email,phoneNo,location,picture,status})
+  const newSupp = new Supplier({name,email,phoneNo,location,picture,addedBy,addedAt,statusId})
   await newSupp.save().then(()=>{
       res.status(200).json({message:"Supplier registered successfully"});
   }).catch((err)=>{
@@ -200,4 +207,145 @@ app.post("/add_supplier", async (req,res) => {
       res.status(500).json({message:"Error registering supplier"});
 
   })
+});
+
+//endpoint to add role
+app.post("/add_role", async (req,res) => {
+  const {name} = req.body;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
+  //Create a new Role obj
+  const newRole = new Role({name,addedBy,addedAt,statusId})
+  await newRole.save().then(()=>{
+      res.status(200).json({message:"Role registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering role ',err);
+      res.status(500).json({message:"Error registering role"});
+
+  })
+});
+
+//endpoint to add resto
+app.post("/add_resto", async (req,res) => {
+  const {name,email,phoneNo,location,suppliers,isCentralKitchen,ownerId,picture} = req.body;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
+  //Create a new restaurant obj
+  const newResto = new Resto({name,email,phoneNo,location,suppliers,isCentralKitchen,ownerId,picture,addedBy,addedAt,statusId})
+  await newResto.save().then(()=>{
+      res.status(200).json({message:"Restaurant registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering restaurant ',err);
+      res.status(500).json({message:"Error registering restaurant"});
+
+  })
+});
+
+//endpoint to add product
+app.post("/add_product", async (req,res) => {
+  const {name,picture,ProductTypes_id} = req.body;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
+  //Create a new Product obj
+  const newProduct = new Product({name,picture,ProductTypes_id,addedBy,addedAt,statusId})
+  await newProduct.save().then(()=>{
+      res.status(200).json({message:"Product registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering product ',err);
+      res.status(500).json({message:"Error registering product"});
+
+  })
+});
+
+//endpoint to add team
+app.post("/add_team", async (req,res) => {
+  const {name,location,members,picture} = req.body;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
+  //Create a new Team obj
+  const newTeam = new Team({name,location,members,picture,addedBy,addedAt,statusId})
+  await newTeam.save().then(()=>{
+      res.status(200).json({message:"Team registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering team ',err);
+      res.status(500).json({message:"Error registering team"});
+
+  })
+});
+
+//endpoint to add product type
+app.post("/add_productType", async (req,res) => {
+  const {name} = req.body;
+  const statusId = 1;
+  //Create a new Product Type obj
+  const newProductType = new ProductType({name,statusId})
+  await newProductType.save().then(()=>{
+      res.status(200).json({message:"Product type registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering product type ',err);
+      res.status(500).json({message:"Error registering product type"});
+
+  })
+});
+
+//endpoint to add order
+app.post("/add_order", async (req, res) => {
+  const { supplierId, customerId, description, orderPlacingDate, orderDeliveryDate } = req.body;
+  const statusId = 1;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0'); // Get the day and pad with leading zero if needed
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Get the month (January is 0) and pad with leading zero if needed
+  const year = today.getFullYear(); // Get the full year
+
+  const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
+  const addedBy = req.headers['userId'];
+  // Check if supplierId and customerId are valid ObjectIDs
+  if (!mongoose.Types.ObjectId.isValid(supplierId) || !mongoose.Types.ObjectId.isValid(customerId)) {
+    return res.status(400).json({ message: "Invalid supplierId or customerId" });
+  }
+
+  // Check if the users exist in the Users collection
+  const supplierExists = await User.exists({ _id: supplierId });
+  const customerExists = await User.exists({ _id: customerId });
+
+  if (!supplierExists || !customerExists) {
+    return res.status(400).json({ message: "Invalid supplierId or customerId - User not found" });
+  }
+
+  // Create a new Order object
+  const newOrder = new Order({ supplierId, customerId, description, orderPlacingDate, orderDeliveryDate,addedBy,addedAt,statusId});
+
+  // Save the new order
+  await newOrder.save()
+    .then(() => {
+      res.status(200).json({ message: "Order registered successfully" });
+    })
+    .catch((err) => {
+      console.log('Error registering order ', err);
+      res.status(500).json({ message: "Error registering order" });
+    });
 });

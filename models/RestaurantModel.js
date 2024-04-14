@@ -46,6 +46,8 @@ const restoSchema = new mongoose.Schema({
     },
 },{
     collection: "Restaurants"
+},{
+    versionKey: false
 });
 
 const Resto = mongoose.model("Resto",restoSchema);

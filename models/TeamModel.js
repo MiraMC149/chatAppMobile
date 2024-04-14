@@ -27,7 +27,9 @@ const teamSchema = new mongoose.Schema({
     },
 },{
     collection: "Teams"
-})
+},{
+        versionKey: false
+    });
 //team=restaurant
 const Team = mongoose.model("Team",teamSchema);
 

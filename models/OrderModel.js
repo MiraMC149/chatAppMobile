@@ -28,6 +28,8 @@ const orderSchema = new mongoose.Schema({
     },
 },{
     collection: "Orders"
+},{
+    versionKey: false
 });
 const Order = mongoose.model("Order",orderSchema);
 

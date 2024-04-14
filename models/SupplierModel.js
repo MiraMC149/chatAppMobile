@@ -32,6 +32,8 @@ const supplierSchema = new mongoose.Schema({
     },
 },{
     collection: "Suppliers"
+},{
+    versionKey: false
 });
 
 const Supplier = mongoose.model("Supplier",supplierSchema);

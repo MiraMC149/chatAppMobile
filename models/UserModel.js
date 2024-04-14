@@ -48,6 +48,9 @@ const userSchema = new mongoose.Schema({
     },
 },{
     collection:"Users"
+},
+{
+    versionKey: false
 });
 
 const Users = mongoose.model("Users",userSchema);
