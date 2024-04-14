@@ -187,26 +187,5 @@ app.get("/team_members", (req, res) => {
   });
 });
 
-/*app.post('/send-message', async (req, res) => {
-    try {
-      const zapierWebhookUrl = 'https://hooks.zapier.com/hooks/catch/18470908/3pw05jp/'; // Replace with your actual Zapier Webhooks URL
-  
-      const requestData = {
-        phoneNumber: '+96171119085',
-        //req.body.phoneNumber,
-        message: 'Test message',
-        //req.body.message,
-      };
-  
-      const response = await axios.post(zapierWebhookUrl, requestData);
-  
-      console.log('Message sent successfully:', response.data);
-      res.status(200).json({ success: true, message: 'Message sent successfully' });
-    } catch (error) {
-      console.error('Error triggering Zap:', error);
-      res.status(500).json({ success: false, message: 'Failed to send message' });
-    }
-  });
-  */
 
 
