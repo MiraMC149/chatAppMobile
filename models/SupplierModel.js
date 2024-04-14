@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const supplierSchema = new mongoose.Schema({
-    supplierId:{
-        type:Number,
-        startsAt:1,
-        autoIncrement:true,
-    },
+    //supplierId:{
+      //  type:Number,
+      //  startsAt:1,
+      //  autoIncrement:true,
+    //},
     name:{
         type:String,
         required:true,

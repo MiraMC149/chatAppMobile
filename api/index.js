@@ -66,7 +66,7 @@ app.post("/registration", (req,res) => {
         res.status(200).json({message:"User registered successfully"});
     }).catch((err)=>{
         console.log('Error registering user ',err);
-        res.status(500).json({message:"Error registering the user"});
+        res.status(500).json({message:"Error registering user"});
 
     })
 })
@@ -187,5 +187,17 @@ app.get("/team_members", (req, res) => {
   });
 });
 
+//endpoint to add supplier
+app.post("/add_supplier", async (req,res) => {
+  const {name,email,phoneNo,location,picture} = req.body;
+  const status = 1;
+  //Create a new Supplier obj
+  const newSupp = new Supplier({name,email,phoneNo,location,picture,status})
+  await newSupp.save().then(()=>{
+      res.status(200).json({message:"Supplier registered successfully"});
+  }).catch((err)=>{
+      console.log('Error registering supplier ',err);
+      res.status(500).json({message:"Error registering supplier"});
 
-
+  })
+});

@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const restoSchema = new mongoose.Schema({
-    restoId:{
-        type:Number,
-        startsAt:1,
-        autoIncrement:true,
-    },
+    //restoId:{
+      //  type:Number,
+      //  startsAt:1,
+      //  autoIncrement:true,
+    //},
     name:{
         type:String,
         required:true,

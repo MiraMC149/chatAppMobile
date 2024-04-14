@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const teamSchema = new mongoose.Schema({
-    teamId:{
-        type:Number,
-        startsAt:1,
-        autoIncrement:true,
-    },
+    //teamId:{
+     //   type:Number,
+     //   startsAt:1,
+     //   autoIncrement:true,
+    //},
     name:{
         type:String,
         required:true,

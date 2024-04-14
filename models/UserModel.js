@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
-    userId:{
-        type:Number,
-        startsAt:1,
-        unique:true,
-        autoIncrement:true,
-    },
+   // userId:{
+     //   type:Number,
+     //   startsAt:1,
+     //   unique:true,
+     //   autoIncrement:true,
+    //},
     name:{
         type:String,
         required:true,
@@ -23,17 +23,17 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    roleId:{
+    Roles_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Role",
         required:false,
     },
-    teamId:{
+    Teams_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Team",
         required:false,
     },
-    restoId:{
+    Restaurants_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Resto",
         required:false,
