@@ -102,7 +102,7 @@ app.post("/product_by_category", (req,res) => {
 });
 
 //endpoint to get all suppliers
-app.post("/all_suppliers", (req,res) => {
+app.get("/all_suppliers", (req,res) => {
   Product.find().then((suppliers) => {
     if (suppliers.length > 0) {
       res.status(200).json({message: "Suppliers fetched successfully", data: suppliers});
@@ -114,6 +114,29 @@ app.post("/all_suppliers", (req,res) => {
     res.status(500).json({message: "Error fetching suppliers"});
   });
 });
+
+//endpoint to get all users
+app.get('/all_users', async (req, res) => {
+  try {
+      const dogs = await User.find();
+      res.json(dogs);
+  } catch(e) {
+      res.json(e)
+  }
+});
+/*app.get("/all_users", async (req,res) => {
+  const d = await User.find({}).then((users) => {
+    if (users.length > 0) {
+      res.status(200).json({message: "Users fetched successfully", data: users});
+    } else {
+      console.log("No users found", d);
+      res.status(401).json({message: "No users found"});
+    }
+  }).catch((err) => {
+    console.log('Error fetching products', err);
+    res.status(500).json({message: "Error fetching users"});
+  });
+});*/
 
 //endpoint to get all suppliers for the restaurant
 app.get("/resto_suppliers", (req, res) => {
@@ -146,9 +169,6 @@ app.get("/resto_orders", (req, res) => {
       console.log('Error fetching Orders', err);
       res.status(500).json({ message: "Error fetching orders" });
     });
-  }).catch((err) => {
-    console.log('Error finding Orders', err);
-    res.status(500).json({ message: "Error finding orders" });
   });
 
 //endpoint to get all the user's team members if they are a general manager or owner

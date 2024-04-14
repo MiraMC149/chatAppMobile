@@ -3,6 +3,7 @@ const userSchema = new mongoose.Schema({
     userId:{
         type:Number,
         startsAt:1,
+        unique:true,
         autoIncrement:true,
     },
     name:{
@@ -45,8 +46,10 @@ const userSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+},{
+ collection:"Users"
 });
 
-const User = mongoose.model("User",userSchema);
+const Users = mongoose.model("Users",userSchema);
 
-module.exports = User;
+module.exports = Users;
