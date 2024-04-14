@@ -21,6 +21,8 @@ const productSchema = new mongoose.Schema({
         ref:"ProductType",
         required:false,
     },
+},{
+    collection: "Products"
 });
 const Product = mongoose.model("Product",productSchema);
 

@@ -44,6 +44,8 @@ const restoSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+},{
+    collection: "Restaurants"
 });
 
 const Resto = mongoose.model("Resto",restoSchema);

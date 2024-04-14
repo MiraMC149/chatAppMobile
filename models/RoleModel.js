@@ -12,6 +12,8 @@ const roleSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+},{
+    collection: "Roles"
 });
 const Role = mongoose.model("Role",roleSchema);
 

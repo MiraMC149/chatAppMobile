@@ -72,7 +72,7 @@ app.post("/registration", (req,res) => {
 })
 
 //endpoint for user login
-app.post("/sign_in", (req,res) => {
+app.get("/sign_in", (req,res) => {
   const {email,password} = req.body;
   User.findOne({email, password}).then((user) => {
     if (user) {
@@ -87,7 +87,7 @@ app.post("/sign_in", (req,res) => {
 });
 
 //endpoint to get all products
-app.post("/product_by_category", (req,res) => {
+app.get("/product_by_category", (req,res) => {
   const {productCategory} = req.body;
   Product.find({productTypeId: productCategory}).then((products) => {
     if (products.length > 0) {
@@ -116,27 +116,18 @@ app.get("/all_suppliers", (req,res) => {
 });
 
 //endpoint to get all users
-app.get('/all_users', async (req, res) => {
-  try {
-      const dogs = await User.find();
-      res.json(dogs);
-  } catch(e) {
-      res.json(e)
-  }
-});
-/*app.get("/all_users", async (req,res) => {
-  const d = await User.find({}).then((users) => {
+app.get("/all_users", async (req,res) => {
+  await User.find({}).then((users) => {
     if (users.length > 0) {
       res.status(200).json({message: "Users fetched successfully", data: users});
     } else {
-      console.log("No users found", d);
-      res.status(401).json({message: "No users found"});
+      res.status(200).json({message: "No users found"});
     }
   }).catch((err) => {
     console.log('Error fetching products', err);
     res.status(500).json({message: "Error fetching users"});
   });
-});*/
+});
 
 //endpoint to get all suppliers for the restaurant
 app.get("/resto_suppliers", (req, res) => {

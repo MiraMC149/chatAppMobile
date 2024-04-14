@@ -30,6 +30,8 @@ const supplierSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+},{
+    collection: "Suppliers"
 });
 
 const Supplier = mongoose.model("Supplier",supplierSchema);

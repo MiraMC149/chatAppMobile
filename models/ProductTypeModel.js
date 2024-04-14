@@ -12,6 +12,8 @@ const productTypeSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+},{
+    collection: "Product Types"
 });
 const ProductType = mongoose.model("ProductType",productTypeSchema);
 
