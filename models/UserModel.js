@@ -23,17 +23,17 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    Roles_id:{
+    roleId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Role",
         required:false,
     },
-    Teams_id:{
+    teamId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Team",
         required:false,
     },
-    Restaurants_id:{
+    restoId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Resto",
         required:false,
