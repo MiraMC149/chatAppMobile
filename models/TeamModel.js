@@ -9,17 +9,23 @@ const teamSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    location:{
-        type:String,
-        required:true,
-    },
     members:{
         type:Array,
         required:true,
     },
-    picture:{
-        type:String,
-        required:false,
+    addedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
+    addedAt:{
+        type:Date,
+        default:Date.now
+    },
+    branchId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Branch",
+        required:true,
     },
     statusId:{
         type:Number,

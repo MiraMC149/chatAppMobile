@@ -14,8 +14,12 @@ const supplierSchema = new mongoose.Schema({
         required:false,
         unique:true,
     },
-    phoneNo:{
-        type:String,
+    contactPersonsId:{
+        type:Array,
+        required:false,
+    },
+    productId:{
+        type:Array,
         required:false,
     },
     location:{

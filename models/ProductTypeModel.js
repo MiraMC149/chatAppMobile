@@ -12,6 +12,15 @@ const productTypeSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+    addedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
+    addedAt:{
+        type:Date,
+        default:Date.now
+    },
 },{
     collection: "Product Types"
 },{

@@ -12,6 +12,10 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:false,
     },
+    unit:{
+        type:String,
+        required:true,
+    },
     statusId:{
         type:Number,
         required:true,
@@ -19,8 +23,17 @@ const productSchema = new mongoose.Schema({
     ProductTypes_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"ProductType",
-        required:false,
+        required:true,
     },
+    addedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
+    addedAt:{
+        type:Date,
+        default:Date.now
+    }
 },{
     collection: "Products"
 },{

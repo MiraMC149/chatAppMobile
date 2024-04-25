@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const orderSchema = new mongoose.Schema({
+const marketingCampaignSchema = new mongoose.Schema({
   //  orderId:{
     //    type:Number,
         
@@ -9,14 +9,21 @@ const orderSchema = new mongoose.Schema({
         ref:"Supplier",
         required:true,
     },
-    restoId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Branch",
+    productCategoriesId:{
+        type:Array,
         required:true,
     },
-    description:{
+    title:{
         type:String,
-        required:false,
+        required:true,
+    },
+    message:{
+        type:String,
+        required:true,
+    },
+    promotionPercentage:{
+        type:Number,
+        required:true,
     },
     addedBy:{
         type:mongoose.Schema.Types.ObjectId,
@@ -27,28 +34,19 @@ const orderSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
-    orderDeliveryDate:{
+    endDate:{
         type:Date,
-        default:Date.now,
-        required:true,
-    },
-    products:{
-        type:Array,
-        required:true,
-    },
-    isDelivered:{
-        type:Number,
-        required:true,
+        default:Date.now
     },
     statusId:{
         type:Number,
         required:true,
     }
 },{
-    collection: "Orders"
+    collection: "MarketingCampaigns"
 },{
     versionKey: false
 });
-const Order = mongoose.model("Order",orderSchema);
+const marketingCampaigns = mongoose.model("MarketingCampaign",marketingCampaignSchema);
 
-module.exports = Order;
+module.exports = marketingCampaigns;

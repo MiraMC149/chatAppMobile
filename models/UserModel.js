@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
      //   unique:true,
      //   autoIncrement:true,
     //},
-    name:{
+    firstName:{
+        type:String,
+        required:true,
+    },
+    lastName:{
         type:String,
         required:true,
     },
@@ -23,9 +27,22 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    username:{
+        type:String,
+        required:true,
+    },
+    typeId:{
+        type: Number,
+        required:true,
+    },
     roleId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Role",
+        required:false,
+    },
+    accessRoleId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"AccessRole",
         required:false,
     },
     teamId:{
@@ -33,11 +50,11 @@ const userSchema = new mongoose.Schema({
         ref:"Team",
         required:false,
     },
-    restoId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Resto",
-        required:false,
-    },
+    //restoId:{
+      //  type:mongoose.Schema.Types.ObjectId,
+      //  ref:"Resto",
+      //  required:false,
+    //},
     picture:{
         type:String,
         required:false,
@@ -46,6 +63,11 @@ const userSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+    addedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"userId",
+        required:true,
+    }
 },{
     collection:"Users"
 },

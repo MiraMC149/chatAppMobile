@@ -28,7 +28,6 @@ const restoSchema = new mongoose.Schema({
     },
     isCentralKitchen:{
         type:Boolean,
-        ref:"Role",
         required:false,
     },
     ownerId:{
