@@ -40,7 +40,7 @@ router.get("/products", (req,res) => {
   });
 
   //endpoint to add product
-router.post("/add_product", async (req,res) => {
+  router.post("/add_product", async (req,res) => {
     const {name,picture,ProductTypes_id} = req.body;
     const statusId = 1;
     const today = new Date();

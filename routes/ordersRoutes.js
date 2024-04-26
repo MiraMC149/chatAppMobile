@@ -52,7 +52,7 @@ router.post("/add", async (req, res) => {
 
   //endpoint to get all orders for the restaurant
     router.get("/resto_orders", (req, res) => {
-    const { restoId } = req.params;
+    const { restoId } = req.headers;
       Order.find({ restoId: restoId }).then((orders) => {
         res.status(200).json({ message: "Orders fetched successfully", data: orders });
       }).catch((err) => {

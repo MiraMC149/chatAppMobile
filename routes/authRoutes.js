@@ -4,13 +4,13 @@ const router = express.Router();
 const User = require('../models/UserModel');
 
 //endpoint for user registration
-router.post("/registration", (req,res) => {
-    const {name,email,password,phoneNo,picture,status} = req.body;
+router.post("/signup", (req,res) => {
+    const {firstName,lastName,email,password,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,status,addedBy,addedAt} = req.body;
     if(status==null){
         status=1;
     }
     //Create a new user obj
-    const newUser = new User({name,password,email,phoneNo,picture,status})
+    const newUser = new User({firstName,lastName,password,email,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,status,addedBy,addedAt})
     newUser.save().then(()=>{
         res.status(200).json({message:"User registered successfully"});
     }).catch((err)=>{
@@ -21,8 +21,7 @@ router.post("/registration", (req,res) => {
 })
 
 //endpoint for user login
-router.post("/sign_in", (req,res) => {
-console.log('req.body',req.body)
+router.post("/login", (req,res) => {
   const {email,password} = req.body;
   User.findOne({email, password}).then((user) => {
     if (user) {

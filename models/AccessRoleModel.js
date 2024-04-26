@@ -12,6 +12,15 @@ const accessRoleSchema = new mongoose.Schema({
         type:Number,
         required:true,
     },
+    addedAt:{
+        type:Date,
+        default:Date.now
+    },
+    addedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true,
+    },
 },{
     collection: "Roles"
 },{

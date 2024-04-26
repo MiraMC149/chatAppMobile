@@ -66,8 +66,12 @@ const userSchema = new mongoose.Schema({
     addedBy:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"userId",
-        required:true,
-    }
+        required:false,
+    },
+    addedAt:{
+        type:Date,
+        default:Date.now
+    },
 },{
     collection:"Users"
 },

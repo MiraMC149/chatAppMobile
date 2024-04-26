@@ -27,7 +27,7 @@ import {
     const navigation = useNavigation();
     const [selectedImage, setSelectedImage] = useState("");
     const route = useRoute();
-    const { recepientId } = route.params;
+    const { recepientId } = route.headers;
     const [message, setMessage] = useState("");
     const { userId, setUserId } = useContext(UserType);
   

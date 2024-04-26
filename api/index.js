@@ -87,7 +87,7 @@ app.get("/all_suppliers", (req,res) => {
 
 //endpoint to get all the user's team members if they are a general manager or owner
 app.get("/team_members", (req, res) => {
-  const { userId, teamId } = req.params;
+  const { userId, teamId } = req.headers;
 
   User.findById(userId).then((user) => {
     if (!user) {

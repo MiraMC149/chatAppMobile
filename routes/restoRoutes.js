@@ -34,7 +34,7 @@ router.post("/add_resto", async (req,res) => {
 
 //endpoint to get all suppliers for the restaurant
 router.get("/resto_suppliers", (req, res) => {
-    const { restoId } = req.params;
+    const { restoId } = req.headers;
   
     Resto.findById(restoId).then((resto) => {
       if (!resto) {

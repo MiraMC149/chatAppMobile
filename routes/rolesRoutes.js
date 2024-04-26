@@ -9,23 +9,24 @@ const Role = require('../models/RoleModel');
 const ProductType = require('../models/ProductTypeModel');
 const Product = require('../models/ProductModel');
 const Order = require('../models/OrderModel');
+const AccessRole = require('../models/AccessRoleModel');
 const MarketingCampaign = require('../models/MarketingCampaignModel');
 
-//endpoint to get all marketing campaigns for the supplier
-router.get("/Get/Marketing_Campaigns", (req, res) => {
-    const { supplierId } = req.headers;
-    MarketingCampaign.find({ supplierId: supplierId }).then((campaigns) => {
-        res.status(200).json({ message: "Campaigns fetched successfully", data: campaigns });
+//endpoint to get all user's role
+router.get("/Get/Role", (req, res) => {
+    const { userId } = req.headers;
+    Role.find({ userId: userId }).then((role) => {
+        res.status(200).json({ message: "Role fetched successfully", data: role });
       }).catch((err) => {
-        console.log('Error fetching campaigns', err);
-        res.status(500).json({ message: "Error fetching campaigns" });
+        console.log('Error fetching role', err);
+        res.status(500).json({ message: "Error fetching role" });
       });
     });
 
-//endpoint to add/edit a supplier's marketing campaigns
-router.post("/Add/Marketing_Campaigns", (req, res) => {
-    const { userId } = req.headers;
-    const { supplierId, productCategoriesId, title, message, promotionPercentage, endDate, statusId } = req.body;
+//endpoint to add/edit an access role
+router.post("/Add/Role", (req, res) => {
+    const { roleId, userId } = req.headers;
+    const { name, statusId } = req.body;
     if(status==null){
         status=1;
     };
@@ -37,12 +38,12 @@ router.post("/Add/Marketing_Campaigns", (req, res) => {
     const addedAt = `${year}-${month}-${day}`; // Format the date as YYYY-MM-DD 
     const addedBy = userId;
 
-    const newMarketingCampaign = new MarketingCampaign({ supplierId, productCategoriesId, title, message, promotionPercentage, endDate, addedBy, addedAt, statusId });
-    newMarketingCampaign.save().then(() => {
-        res.status(200).json({ message: "Campaign registered successfully" });
+    const newAccessRole = new AccessRole({ name, accessRoleId, addedBy, addedAt, statusId });
+    newAccessRole.save().then(() => {
+        res.status(200).json({ message: "Role added successfully" });
     }).catch((err) => {
-        console.log('Error registering campaign ', err);
-        res.status(500).json({ message: "Error registering campaign" });
+        console.log('Error registering role ', err);
+        res.status(500).json({ message: "Error registering role" });
     });
 });
 
