@@ -5,12 +5,12 @@ const User = require('../models/UserModel');
 
 //endpoint for user registration
 router.post("/signup", (req,res) => {
-    const {firstName,lastName,email,password,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,status,addedBy,addedAt} = req.body;
-    if(status==null){
+    const {firstName,lastName,email,password,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,statusId,addedBy,addedAt} = req.body;
+    if(statusId==null){
         status=1;
     }
     //Create a new user obj
-    const newUser = new User({firstName,lastName,password,email,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,status,addedBy,addedAt})
+    const newUser = new User({firstName,lastName,password,email,phoneNo,username,picture,typeId,roleId,accessRoleId,teamId,statusId,addedBy,addedAt})
     newUser.save().then(()=>{
         res.status(200).json({message:"User registered successfully"});
     }).catch((err)=>{
@@ -22,7 +22,7 @@ router.post("/signup", (req,res) => {
 
 //endpoint for user login
 router.post("/login", (req,res) => {
-  const {email,password} = req.body;
+  const {email,password} = req.headers;
   User.findOne({email, password}).then((user) => {
     if (user) {
       res.status(200).json({message: "User logged in successfully", data: user});

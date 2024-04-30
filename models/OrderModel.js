@@ -24,12 +24,11 @@ const orderSchema = new mongoose.Schema({
         required:true,
     },
     addedAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true,
     },
     orderDeliveryDate:{
-        type:Date,
-        default:Date.now,
+        type:String,
         required:true,
     },
     products:{

@@ -19,8 +19,8 @@ const branchSchema = new mongoose.Schema({
         required:true,
     },
     addedAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true,
     },
     statusId:{
         type:Number,

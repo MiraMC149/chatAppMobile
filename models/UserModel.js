@@ -50,11 +50,11 @@ const userSchema = new mongoose.Schema({
         ref:"Team",
         required:false,
     },
-    //restoId:{
-      //  type:mongoose.Schema.Types.ObjectId,
-      //  ref:"Resto",
-      //  required:false,
-    //},
+    branchId:{
+       type:mongoose.Schema.Types.ObjectId,
+        ref:"Branch",
+        required:false,
+    },
     picture:{
         type:String,
         required:false,
@@ -69,11 +69,14 @@ const userSchema = new mongoose.Schema({
         required:false,
     },
     addedAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true,
     },
 },{
     collection:"Users"
+},
+{
+    timestamps: true
 },
 {
     versionKey: false

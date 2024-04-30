@@ -19,8 +19,8 @@ const teamSchema = new mongoose.Schema({
         required:true,
     },
     addedAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true,
     },
     branchId:{
         type:mongoose.Schema.Types.ObjectId,

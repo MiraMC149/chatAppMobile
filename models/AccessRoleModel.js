@@ -13,8 +13,8 @@ const accessRoleSchema = new mongoose.Schema({
         required:true,
     },
     addedAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true,
     },
     addedBy:{
         type:mongoose.Schema.Types.ObjectId,
