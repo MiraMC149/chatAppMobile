@@ -9,6 +9,7 @@ const productsRoutes = require('../routes/productsRoutes')
 const campaignsRoutes = require('../routes/marketingCampaignsRoutes')
 const ordersRoutes = require('../routes/ordersRoutes')
 const restoRoutes = require('../routes/restoRoutes')
+const AccessRole = require('../routes/accessRoleRoutes')
 dotenv.config();
 
 const app = express();
