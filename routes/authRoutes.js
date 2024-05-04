@@ -23,7 +23,8 @@ router.post("/signup", (req,res) => {
 //endpoint for user login
 router.post("/login", (req,res) => {
   const {email,password} = req.headers;
-  User.findOne({email, password}).then((user) => {
+  const lowercaseEmail = email.toLowerCase();
+  User.findOne({ email: { $regex: lowercaseEmail, $options: 'i' } },{ password}).then((user) => {
     if (user) {
       res.status(200).json({message: "User logged in successfully", data: user});
     } else {

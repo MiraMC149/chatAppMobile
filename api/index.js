@@ -27,6 +27,7 @@ app.use('/product', productsRoutes);
 app.use('/campaigns', campaignsRoutes);
 app.use('/orders', ordersRoutes);
 app.use('/resto', restoRoutes);
+app.use('/accessRole', AccessRole);
 
 const jwt = require("jsonwebtoken");
 
