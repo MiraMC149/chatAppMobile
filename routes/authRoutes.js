@@ -21,21 +21,23 @@ router.post("/signup", (req,res) => {
 })
 
 //endpoint for user login
-router.post("/login", (req,res) => {
-  const {email,password} = req.headers;
+router.post("/login", (req, res) => {
+  const { email, password } = req.headers;
   const lowercaseEmail = email.toLowerCase();
-  User.findOne({ email: { $regex: lowercaseEmail, $options: 'i' } },{ password}).then((user) => {
+  User.findOne(
+    { email: { $regex: lowercaseEmail, $options: "i" } },
+    { password: 0 } // Exclude the password field from the projection
+  ).then((user) => {
     if (user) {
-      res.status(200).json({message: "User logged in successfully", data: user});
+      res.status(200).json({ message: "User logged in successfully", data: user });
     } else {
-      res.status(401).json({message: "Invalid email or password"});
+      res.status(401).json({ message: "Invalid email or password" });
     }
   }).catch((err) => {
     console.log('Error logging in user ', err);
-    res.status(500).json({message: "Error logging in the user"});
+    res.status(500).json({ message: "Error logging in the user" });
   });
 });
-
 //endpoint to get all users
 router.get("/all_users", async (req,res) => {
   await User.find({}).then((users) => {
